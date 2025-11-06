@@ -46,7 +46,7 @@ body {
 }
 
 .nav-logo img {
-    height: 40px;
+    height: 300px;
     width:auto;
     vertical-align: middle;
 }
@@ -63,6 +63,10 @@ body {
     font-family: urbanist, inter;
     cursor: pointer;
 }
+.nav-button:hover{
+    transform: scale(1.07);
+    transition: transform 0.3s ease-in-out;
+}
 
 .nav-link {
     text-decoration: none;
@@ -72,7 +76,10 @@ body {
     font-weight: 500;
     font-size: 1.2em;
 }
-
+.nav-link:hover{
+    color: var(--text-primary);
+    transition: color 0.1s ease-in-out;
+}
 .hero-section {
     position: relative;
     height: 60vh;
@@ -146,13 +153,49 @@ body {
 .hero-button:hover {
     transform: scale(1.05);
 }
-@keyframes fadeinup{
-    from {
-        opacity:0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity:1;
-        transform: translateY(0);
-    }
+.review-card {
+    position: absolute;
+    width: 200px; 
+    padding: 15px 20px;
+    border-radius: 12px;
+    
+    
+    background-color: rgba(30, 26, 51, 0.6);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    color: var(--text-primary);
+    font-family: urbanist, inter;
+    
+    
+    opacity: 0;
+    transition: all 1s ease-out;
 }
+.review-card p {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 0 0 8px 0;
+}
+
+.review-card span {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+
+.review-1 { top: 20%; left: 10%; transform: translateX(-10px); }
+.review-2 { top: 65%; left: 15%; transform: translateX(-15px); }
+.review-3 { top: 20%; right: 8%; transform: translateX(20px); }
+.review-4 { top: 75%; right: 15%; transform: translateX(1px); }    
+.review-5 { bottom:80%;} 
+
+.hero-section.reviews-active .review-card {
+    opacity: 1;
+    transform: translateX(0); 
+}
+
+.hero-section.reviews-active .review-1 { transition-delay: 0.4s; }
+.hero-section.reviews-active .review-2 { transition-delay: 0.2s; }
+.hero-section.reviews-active .review-3 { transition-delay: 0.1s; }
+.hero-section.reviews-active .review-4 { transition-delay: 0.3s; }
+.hero-section.reviews-active .review-5 { transition-delay: 0.2s; }

@@ -6,7 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Momo+Trust+Display&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav class="navbar">
@@ -21,6 +21,26 @@
         <button class="nav-button">Spot</button>
     </nav>
     <section class="hero-section">
+        <div class="review-card review-1">
+            <p>"Credora is amazing! Changed my finances."</p>
+            <span>- Aryan ⭐️⭐️⭐️⭐️</span>
+        </div>
+        <div class="review-card review-2">
+            <p>"So easy to use, platform is 10/10."</p>
+            <span>- Mia K.⭐️⭐️⭐️⭐️⭐️</span>
+        </div>
+        <div class="review-card review-3">
+            <p>"Finally! A platform I can actually trust."</p>
+            <span>- Yash⭐️⭐️⭐️⭐️⭐️</span>
+        </div>
+        <div class="review-card review-4">
+            <p>"The best rates I've found anywhere."</p>
+            <span>- Aditya.⭐️⭐️⭐️⭐️</span>
+        </div>
+        <div class="review-card review-5">
+            <p>"Just amazing"</p>
+            <span>-Devansh.⭐️⭐️⭐️⭐️⭐️</span>
+        </div>
         <div class="hero-content">
             <h1>CREDORA</h1>
             <p>Digital Asset Platform for Everyone</p>
@@ -28,6 +48,16 @@
         </div>
    </section>
 
-    
+   <script>
+        const heroCard = document.querySelector('.hero-content');
+        const heroSection = document.querySelector('.hero-section');
+
+        heroCard.addEventListener('mouseenter', () => {
+            heroSection.classList.add('reviews-active');
+        }, { once: true });
+   </script>
+
+</body>
+</html>
 </body>
 </html>
