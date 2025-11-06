@@ -1,0 +1,78 @@
+:root {
+  /* --- Dark Theme --- */
+  --dark-background: #0D0C14;     /* The outer page background */
+  --ui-background: #1E1A33;       /* The background of cards/modals */
+  
+  /* --- Accents --- */
+  --accent-primary: #9055FF;      /* For buttons and highlights */
+  --accent-secondary: #6A6DFF;   /* For gradients */
+
+  /* --- Text --- */
+  --text-primary: #FFFFFF;        /* For main text and headings */
+  --text-secondary: #AFA8C9;     /* For subheadings, muted text */
+  --text-muted: #8E8A9A;          /* For inactive icons */
+}
+body{
+    padding-top:0px;
+    margin:0;
+    background-color: var(--dark-background);
+    font-family: urbanist,inter;
+    font-weight:400;
+}
+.navbar{
+    position:fixed;
+    display:flex;
+    height:60px;
+    align-items:center;
+    box-sizing:border-box;
+    width:100%;
+    background-color: var(--ui-background); 
+    backdrop-filter: blur(10px); 
+    padding:10px;
+
+}
+.nav-logo {
+    text-decoration:none;
+    margin-right: auto;
+   
+
+}
+.nav-logo img{
+    height:40px;
+    width:auto;
+    margin-top:10px;
+}
+
+.nav-button{
+    background: linear-gradient(90deg, var(--accent-secondary), var(--accent-primary));
+    border:none;
+    border-radius: 50px;
+    padding-top:7px;
+    padding-bottom:7px;
+    padding-left: 15px;
+    padding-right:15px;
+    margin:0 10px 0 10px;
+    font-weight:550;
+    font-size:1.0em;
+    color:var(--text-primary);
+    font-family:urbanist,inter;
+    cursor:pointer;
+
+}
+.nav-link{
+    
+    text-decoration:none;
+    color: var(--text-secondary);
+    margin:0 10px 0 10px;
+    padding:10px;
+    font-weight:500;
+    font-size:1.2em;
+}
+.hero-section{
+    margin-top:60px;
+    position:relative;
+    height:60vh;
+    width:100%;
+    background-image:url("/credora-site/assets/background.png");
+    background-size:cover;
+}
