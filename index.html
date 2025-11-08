@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    
     <nav class="navbar">
         <a href="#" class="nav-logo"><img src="/credora-site/assets/logo1.png" alt="logo" ></a>
         <a href="#" class="nav-link">Products</a>
@@ -40,6 +41,11 @@
         <div class="review-card review-5">
             <p>"Just amazing"</p>
             <span>-Devansh.⭐️⭐️⭐️⭐️⭐️</span>
+        <div class="trust">
+    <span>Download App Using</span>
+    <img src="/credora-site/assets/icons/appstore.png" alt="appstore" class="appstore">
+    <img src="/credora-site/assets/icons/playstore.png" alt="playstore" class="playstore">
+</div>
         </div>
         <div class="hero-content">
             <h1>CREDORA</h1>
@@ -47,7 +53,67 @@
             <button class="hero-button">Get Started</button>
         </div>
    </section>
+   <div class="infinite-carousel">
+    
+        <canvas id="digital-rain"></canvas>
+        
+        <div class="carousel-scroller">
+        
+            <div class="carousel-track">
+                <div class="carousel-item 1"><img src="assets/icons/bitcoin.png"></div>
+                <div class="carousel-item 2"><img src="assets/icons/bch.png"></div>
+                <div class="carousel-item 3"><img src="assets/icons/bnb.png"></div>
+                <div class="carousel-item 4"><img src="assets/icons/cardano.png"></div>
+                <div class="carousel-item 5"><img src="assets/icons/dogecoinpng.png"></div>
+                <div class="carousel-item 6"><img src="assets/icons/ethereum.png"></div>
+                <div class="carousel-item 7"><img src="assets/icons/litecoin.png"></div>
+                <div class="carousel-item 8"><img src="assets/icons/tether.png"></div>
+                <div class="carousel-item 9"><img src="assets/icons/tron.png"></div>
+                <div class="carousel-item 10"><img src="assets/icons/usdc.png"></div>
+                <div class="carousel-item 11"><img src="assets/icons/xrp.png"></div>
+                <div class="carousel-item 12"><img src="assets/icons/monero.png"></div>
+                <div class="carousel-item 13"><img src="assets/icons/solana.png"></div>
+                <div class="carousel-item 14"><img src="assets/icons/hedera.png"></div>
+            </div>
 
+            <div class="carousel-track" aria-hidden="true">
+                <div class="carousel-item 1"><img src="assets/icons/bitcoin.png"></div>
+                <div class="carousel-item 2"><img src="assets/icons/bch.png"></div>
+                <div class="carousel-item 3"><img src="assets/icons/bnb.png"></div>
+                <div class="carousel-item 4"><img src="assets/icons/cardano.png"></div>
+                <div class="carousel-item 5"><img src="assets/icons/dogecoinpng.png"></div>
+                <div class="carousel-item 6"><img src="assets/icons/ethereum.png"></div>
+                <div class="carousel-item 7"><img src="assets/icons/litecoin.png"></div>
+                <div class="carousel-item 8"><img src="assets/icons/tether.png"></div>
+                <div class="carousel-item 9"><img src="assets/icons/tron.png"></div>
+                <div class="carousel-item 10"><img src="assets/icons/usdc.png"></div>
+                <div class="carousel-item 11"><img src="assets/icons/xrp.png"></div>
+                <div class="carousel-item 12"><img src="assets/icons/monero.png"></div>
+                <div class="carousel-item 13"><img src="assets/icons/solana.png"></div>
+                <div class="carousel-item 14"><img src="assets/icons/hedera.png"></div>
+            </div>
+
+        </div> </div>
+   </div>
+  <div class="lie">
+    <h1 class="lie3" >India’s First Crypto App with <span id="lie2">2.5 Crore+ Users</span></h1>
+    <h3 class="lie4">Begin your crypto investment journey today &#8595;</h3>
+    
+  </div>
+  <div class="timeline-container">
+  
+  <div class="vertical-line"></div>
+
+  <div class="timeline-event">Trusted by 2.5cr+ <div>Indian Users</div></div>
+  <div class="timeline-event">8.5 Lakh Cr+<div>Traded Volume</div> </div>
+   <div class="timeline-event">350+ coins <div>Listed</div> </div>
+
+</div>
+
+<!--javascript for hero section but not written by me -->
+<!--javascript for hero section but not written by me -->
+<!--javascript for hero section but not written by me -->
+<!--javascript for hero section but not written by me -->
    <script>
         const heroCard = document.querySelector('.hero-content');
         const heroSection = document.querySelector('.hero-section');
@@ -56,7 +122,65 @@
             heroSection.classList.add('reviews-active');
         }, { once: true });
    </script>
+   <script>
+    // Digital Rain Effect (Updated for parent container)
+    const canvas = document.getElementById('digital-rain');
+    const ctx = canvas.getContext('2d');
+    
+    let columns = 0;
+    let drops = [];
+    const fontSize = 16;
+    const characters = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン0123456789';
+    const charactersArray = characters.split('');
 
+    // This function now sizes the canvas to its parent
+    const setupCanvas = () => {
+        const parent = canvas.parentElement;
+        if (!parent) return;
+        
+        // Match parent's rendered size
+        canvas.width = parent.clientWidth;
+        canvas.height = parent.clientHeight;
+        
+        columns = Math.ceil(canvas.width / fontSize);
+        
+        // Recalculate drops array for the new width
+        drops = [];
+        for (let x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
+    };
+    
+    // Set up initially
+    setupCanvas();
+    
+    // And set it up again if the parent box resizes
+    // (This is more reliable than 'window.addEventListener')
+    new ResizeObserver(setupCanvas).observe(canvas.parentElement);
+
+    function draw() {
+        // Use your box's background color, but with low alpha for the fade
+        ctx.fillStyle = 'rgba(30, 26, 51, 0.1)'; 
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = '#4D7BFF'; // Royal Blue color
+        ctx.font = fontSize + 'px monospace';
+
+        for (let i = 0; i < drops.length; i++) {
+            if (!drops[i]) drops[i] = 1; // Failsafe
+            
+            const text = charactersArray[Math.floor(Math.random() * charactersArray.length)];
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+    }
+
+    setInterval(draw, 33);
+</script>
 </body>
 </html>
 </body>
