@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coins - Credora</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Urbanist:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo"><img src="/credora-site/assets/logo1.png" alt="logo" ></a>
+        <a href="products.html" class="nav-link" target="_blank">Products</a>
+        <a href="coins.html" class="nav-link" target="_blank">Coins</a>
+        <a href="ventures.html" class="nav-link" target="_blank">Ventures</a>
+        <a href="blog.html" class="nav-link" target="_blank">Blog</a>
+        <a href="company.html" class="nav-link" target="_blank">Company</a>
+        <button class="nav-button">Futures</button>
+        <button class="nav-button">Options</button>
+        <button class="nav-button">Spot</button>
+    </nav>
+
+    <main class="page-content">
+        <section class="crypto-prices-section" style="padding-top: 60px;">
+            <div class="crypto-prices-container">
+                <h1 class="page-title">Live Crypto Prices</h1>
+                <p class="page-subtitle">Track the market with real-time data on your favorite assets.</p>
+                <div class="search-container">
+                    <input type="text" id="coin-search" placeholder="Search for a coin (e.g., Bitcoin, ETH)...">
+                </div>
+                <div class="crypto-table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>24h Change</th>
+                                <th>Market Cap</th>
+                            </tr>
+                        </thead>
+                        <tbody id="crypto-table-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-column footer-logo-social">
+                    <h3 class="footer-logo-text">Credora</h3>
+                    <p class="follow-us">Follow us on</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#"><i class="fa-brands fa-telegram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column footer-compliance">
+                    <div class="compliance-item">FIU REGISTERED</div>
+                    <div class="compliance-item">ISO/IEC 27001:2022 CERTIFIED</div>
+                </div>
+                <div class="footer-column footer-contact">
+                    <p>Email us at <a href="mailto:support@credora.com">support@credora.com</a></p>
+                    <p><a href="#">Raise a Ticket</a></p>
+                    <p>Contact us <a href="#">080-12345678</a></p>
+                </div>
+            </div>
+            <div class="footer-sitemap">
+                <div class="sitemap-column">
+                    <h4>Products</h4>
+                    <a href="#">Crypto Portfolio</a>
+                    <a href="#">Futures Trading</a>
+                    <a href="#">Systematic Investment</a>
+                    <a href="#">Crypto Baskets</a>
+                    <a href="#">Options Trading</a>
+                </div>
+                <div class="sitemap-column">
+                    <h4>Buy Crypto</h4>
+                    <a href="#">Buy Bitcoin</a>
+                    <a href="#">Buy Ethereum</a>
+                    <a href="#">Buy Dogecoin</a>
+                    <a href="#">Buy Solana</a>
+                    <a href="#">Buy Cardano</a>
+                </div>
+                <div class="sitemap-column">
+                    <h4>INR Conversion</h4>
+                    <a href="#">BTC to INR</a>
+                    <a href="#">ETH to INR</a>
+                    <a href="#">USDT to INR</a>
+                    <a href="#">SOL to INR</a>
+                    <a href="#">XRP to INR</a>
+                </div>
+                <div class="sitemap-column">
+                    <h4>Policies</h4>
+                    <a href="#">T&C</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">AML Policy</a>
+                    <a href="#">Risk Disclosure</a>
+                    <a href="#">Trading Policy</a>
+                </div>
+                <div class="sitemap-column">
+                    <h4>Company</h4>
+                    <a href="#">About Us</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Media & Press</a>
+                    <a href="#">Contact Us</a>
+                </div>
+            </div>
+            <div class="footer-bottom-text">
+                <p>Disclaimer: Crypto products and NFTs are unregulated and can be highly risky. There may be no regulatory recourse for any loss from such transactions. For further queries, contact us.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    async function fetchCryptoPrices() {
+        const cryptoTableBody = document.getElementById('crypto-table-body');
+        const searchInput = document.getElementById('coin-search');
+        try {
+            const response = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false');
+            if (!response.ok) throw new Error(`API request failed`);
+            const allCoins = await response.json();
+            
+            function displayCoins(coins) {
+                cryptoTableBody.innerHTML = ''; 
+                if (coins.length === 0) {
+                    cryptoTableBody.innerHTML = '<tr><td colspan="5">No coins found.</td></tr>';
+                    return;
+                }
+                coins.forEach((coin, index) => {
+                    const priceChange = coin.price_change_percentage_24h;
+                    const priceChangeClass = priceChange >= 0 ? 'positive' : 'negative';
+                    const priceChangeSymbol = priceChange >= 0 ? '▲' : '▼';
+                    const row = `
+                        <tr>
+                            <td>${coin.market_cap_rank}</td>
+                            <td class="coin-name"><img src="${coin.image}" alt="${coin.name}" width="24" height="24"> <span>${coin.name} <span class="symbol">(${coin.symbol.toUpperCase()})</span></span></td>
+                            <td>$${coin.current_price.toLocaleString()}</td>
+                            <td class="${priceChangeClass}">${priceChangeSymbol} ${Math.abs(priceChange).toFixed(2)}%</td>
+                            <td>$${coin.market_cap.toLocaleString()}</td>
+                        </tr>`;
+                    cryptoTableBody.innerHTML += row;
+                });
+            }
+
+            displayCoins(allCoins);
+
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const filteredCoins = allCoins.filter(coin => 
+                    coin.name.toLowerCase().includes(searchTerm) || 
+                    coin.symbol.toLowerCase().includes(searchTerm)
+                );
+                displayCoins(filteredCoins);
+            });
+
+        } catch (error) {
+            cryptoTableBody.innerHTML = '<tr><td colspan="5">Could not load data. Please try again later.</td></tr>';
+        }
+    }
+    fetchCryptoPrices();
+    </script>
+</body>
+</html>
